@@ -6,34 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- css -->
     <link rel="stylesheet" href="assets/style.css">
-    <title>JS and CSS Modifier</title>
+    <title>Simple Text CSS Modifier</title>
 </head>
 <body>
     <main>
-        <h1 class="hl">CSS Modifier</h1>
-        <div class="text-container">
-            <label for="text">Input your sample text here:</label>
-            <input type="text" name="text" id="toBeDisplayed" value="Mickey">
-        </div>
-        <div class="controls-container">
-            <div class="controls">
-                <label for="spacing">Spacing:</label>
-                <input type="range" class="colorChange" name="spacing" id="spacing" data-sizing="px">
-                <!--<label for="blur">Blur:</label>
-                <input type="range" name="blur" id="blur" data-sizing="px"> -->
-                <label for="color">Base Color:</label>
-                <input type="color" name="color" class="colorChange" id="color" value="#FB7E7E">
-                <label for="background">BG Color:</label>
-                <input type="color" name="bgcolor" class="colorChange" id="colorB" value="#FFF">
-
-                <label for="fontFam">Choose a car:</label>
-                <select name="fontFam" id="fontFam">
-                    <option value="cursive">cursive</option>
-                    <option value="fantasy">fantasy</option>
-                    <option value="monospace">monospace</option>
-                    <option value="serif">serif</option>
-                    <option value="sans-serif">sans-serif</option>
-                </select>
+        <header>
+            <h1 class="hl">Simple Text CSS Modifier</h1>
+            <h3>Enter some sample text and modify its size, color, and style</h3>
+        </header>
+        <div id="input-panel">
+            <div class="text-container">
+                <label for="text">Input your sample text here:</label>
+                <input type="text" name="text" id="toBeDisplayed" value="This is some text.">
+            </div>
+            <div class="controls-container">
+                <div class="controls">
+                    <label for="spacing">Font Size:</label>
+                    <input type="range" class="colorChange" name="spacing" id="spacing" data-sizing="px">
+                    <label for="color">Base Color:</label>
+                    <input type="color" name="color" class="colorChange" id="color" value="#FB7E7E">
+                    <label for="background">BG Color:</label>
+                    <input type="color" name="bgcolor" class="colorChange" id="colorB" value="#FFF">
+                    <!-- <br> -->
+                    <label for="fontFam">&nbsp;Choose a font family:</label>
+                    <select name="fontFam" id="fontFam" class="colorChange">
+                        <option value="cursive">cursive</option>
+                        <option value="fantasy">fantasy</option>
+                        <option value="monospace">monospace</option>
+                        <option value="serif">serif</option>
+                        <option value="sans-serif">sans-serif</option>
+                    </select>
+                </div>
             </div>
         </div>
         <div class="text-display-container">
@@ -43,7 +46,7 @@
 
 <!-- scripts -->
 <script>
-const textInput = document.querySelectorAll('.controls input')
+const input = document.querySelectorAll('.colorChange')
 
 document.getElementById("toBeDisplayed").addEventListener("input", displayText);
 
@@ -58,12 +61,12 @@ function handleUpdate(){
         document.documentElement.style.setProperty(`--${this.name}`,this.value + suffix);
 }
 
-document.getElementById("color").addEventListener("change", handleUpdate);
-document.getElementById("colorB").addEventListener("change", handleUpdate);
-document.getElementById("spacing").addEventListener("change", handleUpdate);
-document.getElementById("fontFam").addEventListener("change", handleUpdate);
+// document.getElementById("color").addEventListener("change", handleUpdate);
+// document.getElementById("colorB").addEventListener("change", handleUpdate);
+// document.getElementById("spacing").addEventListener("change", handleUpdate);
+// document.getElementById("fontFam").addEventListener("change", handleUpdate);
 
-// input.forEach(input => input.addEventListener('change',handleUpdate));
+input.forEach(input => input.addEventListener('change',handleUpdate));
 // input.forEach(input => input.addEventListener('mousemove',handleUpdate));
 
 </script>
