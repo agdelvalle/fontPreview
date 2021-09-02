@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- css -->
+    <link rel="stylesheet" href="assets/style.css">
+    <title>JS and CSS Modifier</title>
+</head>
+<body>
+    <main>
+        <h1 class="hl">CSS Modifier</h1>
+        <div class="text-container">
+            <label for="text">Input your sample text here:</label>
+            <input type="text" name="text" id="toBeDisplayed" value="Mickey">
+        </div>
+        <div class="controls-container">
+            <div class="controls">
+                <label for="spacing">Spacing:</label>
+                <input type="range" class="colorChange" name="spacing" id="spacing" data-sizing="px">
+                <!--<label for="blur">Blur:</label>
+                <input type="range" name="blur" id="blur" data-sizing="px"> -->
+                <label for="color">Base Color:</label>
+                <input type="color" name="color" class="colorChange" id="color" value="#FB7E7E">
+                <label for="background">BG Color:</label>
+                <input type="color" name="bgcolor" class="colorChange" id="colorB" value="#FFF">
+
+                <label for="fontFam">Choose a car:</label>
+                <select name="fontFam" id="fontFam">
+                    <option value="cursive">cursive</option>
+                    <option value="fantasy">fantasy</option>
+                    <option value="monospace">monospace</option>
+                    <option value="serif">serif</option>
+                    <option value="sans-serif">sans-serif</option>
+                </select>
+            </div>
+        </div>
+        <div class="text-display-container">
+            <p id="textDisplay">This is some text.</p>
+        </div>
+    </main>
+
+<!-- scripts -->
+<script>
+const textInput = document.querySelectorAll('.controls input')
+
+document.getElementById("toBeDisplayed").addEventListener("input", displayText);
+
+function displayText() {
+ var toBeDisplayed = document.getElementById("toBeDisplayed").value;
+ document.getElementById("textDisplay").innerHTML = toBeDisplayed;
+
+}
+
+function handleUpdate(){
+        const suffix = this.dataset.sizing || '';
+        document.documentElement.style.setProperty(`--${this.name}`,this.value + suffix);
+}
+
+document.getElementById("color").addEventListener("change", handleUpdate);
+document.getElementById("colorB").addEventListener("change", handleUpdate);
+document.getElementById("spacing").addEventListener("change", handleUpdate);
+document.getElementById("fontFam").addEventListener("change", handleUpdate);
+
+// input.forEach(input => input.addEventListener('change',handleUpdate));
+// input.forEach(input => input.addEventListener('mousemove',handleUpdate));
+
+</script>
+</body>
+</html>
